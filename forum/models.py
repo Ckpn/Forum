@@ -9,8 +9,9 @@ from ckeditor.fields import RichTextField
 class Category(models.Model):
     name = models.CharField(max_length = 50)
     slug = models.SlugField(null = True, blank = True, editable = False)
-    content = models.CharField(max_length=200, verbose_name = 'İçerik',null=True)
-    
+    content = models.CharField(max_length=200, verbose_name = 'İçerik',null=True, blank= True)
+    created_at = models.DateTimeField(auto_now_add = True, null =True)
+        
     def save(self, *args,**kwargs):
         self.slug = slugify(self.name.replace('ı','i'))
         super().save(*args,**kwargs)
@@ -19,14 +20,15 @@ class Category(models.Model):
         return self.name
     
     class Meta:
-        verbose_name_plural = 'Kategoriler'
+        verbose_name_plural = '01-Kategoriler'
         verbose_name = 'Kategori'
+        ordering = ['name']
         
 class Subcategory(models.Model):
     name = models.CharField(max_length = 50)
     slug = models.SlugField(null = True, blank = True, editable = False)
-    content = models.CharField(max_length=200, verbose_name = 'İçerik',null=True)
     kategori = models.ForeignKey(Category, on_delete = models.SET_NULL, null = True)
+    created_at = models.DateTimeField(auto_now_add = True, null =True)
     
     def save(self, *args,**kwargs):
         self.slug = slugify(self.name.replace('ı','i'))
@@ -36,21 +38,40 @@ class Subcategory(models.Model):
         return self.name
     
     class Meta:
-        verbose_name_plural = 'Alt Kategoriler'
+        verbose_name_plural = '02-Alt Kategoriler'
         verbose_name = 'Alt Kategori'
+        ordering = ['name']
+
+class Subjects(models.Model):
+    name = models.CharField(max_length= 100)
+    slug = models.SlugField(null = True, blank = True ,editable=False)
+    altKategori = models.ForeignKey(Subcategory,on_delete = models.SET_NULL,null = True)
+    created_at = models.DateTimeField(auto_now_add = True, null =True)
+
+    def save(self, *args,**kwargs):
+        self.slug = slugify(self.name.replace('ı','i'))
+        super().save(*args,**kwargs)
+    
+    def __str__(self):
+        return self.name
+    
+    class Meta:
+        verbose_name_plural= '03-Konu Başlıkları'
+        verbose_name = 'Konu'
+        ordering = ['name']
 
 class Comment(models.Model):
     id = models.UUIDField(primary_key = True, db_index = True , unique= True , default =uuid.uuid4 , editable = False)
     title = models.CharField(max_length = 50,verbose_name = 'Başlık')
     owner = models.ForeignKey(User, on_delete = models.CASCADE,null = True, verbose_name = 'Kullanıcı')
-    kategori = models.OneToOneField(Category, on_delete = models.SET_NULL, null = True)
-    altKategori = models.OneToOneField(Subcategory, verbose_name = 'Alt Kategori', on_delete = models.SET_NULL, null=True)
+    subjects = models.ForeignKey(Subjects,on_delete=models.SET_NULL, null= True)
     content =RichTextField('Yorumunuz')
-    image = models.ImageField(upload_to='forum/', verbose_name='Resim',null=True)
+    image = models.ImageField(upload_to='forum/', verbose_name='Resim',null=True,blank= True)
     slug = models.SlugField(null = True, blank = True, editable = False)
     created_at = models.DateTimeField(auto_now_add = True, null =True)
     
     def save(self, *args ,**kwargs):
+        self.slug = f"{slugify(self.title.replace('ı','i'))}-{str(self.id)[:8]}"
         self.slug = slugify(self.title.replace('ı','i'))
         super().save(*args, **kwargs)
     
@@ -58,5 +79,6 @@ class Comment(models.Model):
         return self.title
     
     class Meta:
-        verbose_name_plural = "Yorumlar"
+        verbose_name_plural = "04-Yorumlar"
         verbose_name = "Yorum"
+        ordering = ['-created_at']

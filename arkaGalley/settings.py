@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'forum',
     'ckeditor',
+    'django.contrib.humanize',
 ]
 
 MIDDLEWARE = [
@@ -129,7 +130,7 @@ MEDIA_ROOT = os.path.join(
     BASE_DIR / 'media'
 )
 if DEBUG == True:
-   MEDIA_URL = ''
+    MEDIA_URL = ''
 else:
     MEDIA_URL = 'media/'
     STATIC_ROOT = os.path.join(
