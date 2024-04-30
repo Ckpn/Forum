@@ -16,7 +16,7 @@ class SubjectsAdmin(admin.ModelAdmin):
     readonly_fields = ['slug','created_at']
 
 class CommentAdmin(admin.ModelAdmin):
-    list_display = ['title','owner','content','slug','created_at']
+    list_display = ['title','owner','slug','id','created_at']
     readonly_fields = ['slug','created_at']
 
 

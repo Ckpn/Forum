@@ -6,7 +6,6 @@ from .forms import *
 def index(request):
     categories = Category.objects.all().order_by('name')
     subcategories = Subcategory.objects.all().order_by('name')
-    
     context={
         'categories':categories,
         'subcategories':subcategories,

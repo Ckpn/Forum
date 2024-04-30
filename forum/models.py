@@ -71,7 +71,7 @@ class Comment(models.Model):
     created_at = models.DateTimeField(auto_now_add = True, null =True, verbose_name="Oluşturulma Tarihi")
     
     def save(self, *args ,**kwargs):
-        self.slug = f"{slugify(self.title.replace('ı','i'))}-{str(self.id)[:8]}"
+        self.slug = f"{slugify(self.title.replace('ı','i'))} - {str(self.id)[:8]}"
         self.slug = slugify(self.title.replace('ı','i'))
         super().save(*args, **kwargs)
     
