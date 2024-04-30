@@ -4,11 +4,11 @@ from .models import *
 
 
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ['name']
+    list_display = ['name','created_at']
     readonly_fields = ['slug','created_at']
 
 class SubCategoryAdmin(admin.ModelAdmin):
-    list_display =['name']
+    list_display =['name','kategori','created_at']
     readonly_fields = ['slug','created_at']
     
 class SubjectsAdmin(admin.ModelAdmin):
@@ -16,7 +16,7 @@ class SubjectsAdmin(admin.ModelAdmin):
     readonly_fields = ['slug','created_at']
 
 class CommentAdmin(admin.ModelAdmin):
-    list_display = ['title','owner','content','image','slug']
+    list_display = ['title','owner','content','slug','created_at']
     readonly_fields = ['slug','created_at']
 
 
@@ -26,4 +26,4 @@ class CommentAdmin(admin.ModelAdmin):
 admin.site.register(Comment, CommentAdmin)
 admin.site.register(Category,CategoryAdmin)
 admin.site.register(Subcategory,SubCategoryAdmin)
-admin.site.register(Subjects,SubCategoryAdmin)
+admin.site.register(Subjects,SubjectsAdmin)
