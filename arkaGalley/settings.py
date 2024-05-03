@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'forum',
     'ckeditor',
     'django.contrib.humanize',
+    'user',
 ]
 
 MIDDLEWARE = [

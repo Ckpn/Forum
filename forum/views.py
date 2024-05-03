@@ -46,6 +46,8 @@ def yorum(request):
     return render(request, 'forum3.html', context)
     
 def create(request):
+    if request.method == 'POST':
+        pass
     form = CommentForm()
     context = {
         'form':form

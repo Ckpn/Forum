@@ -62,7 +62,7 @@ class Subjects(models.Model):
 
 class Comment(models.Model):
     id = models.UUIDField(primary_key = True, db_index = True , unique= True , default =uuid.uuid4 , editable = False)
-    title = models.CharField(max_length = 50,verbose_name = 'Başlık')
+    title = models.CharField(max_length =400,verbose_name = 'Başlık')
     owner = models.ForeignKey(User, on_delete = models.CASCADE,null = True, verbose_name = 'Kullanıcı')
     subjects = models.ForeignKey(Subjects,on_delete=models.SET_NULL, null= True,verbose_name='Konu')
     content =RichTextField(('Yorumunuz'))

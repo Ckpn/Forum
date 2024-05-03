@@ -62,12 +62,12 @@
     <div class="forum-con pt-5 ps-0 pe-0 pb-5">
 
         {% block content %}
-
+        
 
 
         {% for kategori in categories %}
         <div class="forum-box2 bg-warning">
-            <a class="text-decoration-none" href="">
+            <a class="text-decoration-none" href="{% url 'forum' %}">
                 <h1 style="color:white">
                     <small style="padding: 0px 5px;text-align: center;">
                         <i class="fa-solid fa-plane-departure"></i>
