@@ -39,13 +39,14 @@ def altForum(request):
 
 def yorum(request):
     mycomment = Comment.objects.all()
-    print(mycomment.id)
     context={
         'mycomment':mycomment
     }
-    return render(request, 'forum3.html', context)
+    return render(request, 'comment.html', context)
     
 def create(request):
+    if request.method == 'POST':
+        pass
     form = CommentForm()
     context = {
         'form':form

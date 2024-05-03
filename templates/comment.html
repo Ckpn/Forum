@@ -1,0 +1,15 @@
+{% extends 'index.html' %}
+
+
+{% block table %}
+        
+{% endblock table %}
+
+
+{% block content %}
+    {% for yorum in mycomment  %}
+        <h4>{{yorum.title}}</h4>
+        <h6>{{yorum.content}}</h6>
+    {% endfor %}
+{% endblock content %}
+    
