@@ -3,6 +3,13 @@
     padding: 0;
     margin: 0;
 }
+/* NAVBAR Başlangıç */
+    .nav-con{
+        padding: 10px;
+        background-color: brown;
+        border: 1px solid black;
+    }
+/* NAVBAR Bitiş */
 .forum-box1{
     background-color: cadetblue;
     height: auto;
@@ -19,5 +26,17 @@
 
 /* COMMENTPAGE */
 .comment-con{
-    padding: 20px !important;
+    padding: 20px;
+    width: 100%;
+    height: 500px;
+}
+.com-con1,
+.com-con2{
+    width: 100%;
+    height: 20px;
+    background-color: grey;
+    border: transparent;
+}
+.com-con3{
+    height: 400px !important;
 }
