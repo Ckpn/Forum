@@ -27,6 +27,7 @@
 /* COMMENTPAGE */
 .comment-con{
     padding: 20px;
+<<<<<<< HEAD
     width: 100%;
     height: 500px;
 }
@@ -39,4 +40,6 @@
 }
 .com-con3{
     height: 400px !important;
+=======
+>>>>>>> fba48c05f4eab4c37f53f536b165af176a8b2139
 }
