@@ -3,21 +3,21 @@
     padding: 0;
     margin: 0;
 }
-
-.forum-con{
-
-}
 .forum-box1{
     background-color: cadetblue;
     height: auto;
     padding: 5px;
 }
 .forum-box2{
-
 }
 .forum-box2 h5{
     margin: 0px 0px;
 }
 .forum-box2 p{
     margin-bottom: 8px;
+}
+
+/* COMMENTPAGE */
+.comment-con{
+    padding: 20px !important;
 }

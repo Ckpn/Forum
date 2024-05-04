@@ -21,6 +21,7 @@ def view_500(request):
 def forum(request):
     mysubcategories= Subcategory.objects.all().order_by('name')
     subjects = Subjects.objects.all().order_by('name')
+    print(Subcategory.slug)
     context ={
         'mysubcategories' : mysubcategories,
         'subjects' : subjects,

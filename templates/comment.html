@@ -2,14 +2,31 @@
 
 
 {% block table %}
-        
+
 {% endblock table %}
 
 
 {% block content %}
-    {% for yorum in mycomment  %}
+<div class="comment-con">
+    <div class="com-con1"></div>
+    <div class="com-con2"></div>
+    <div class="com-con3">
+        <div class="com-box1">
+            <div class="card" style="width: 18rem;">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+        </div>
+        <div class="com-box2"></div>
+    </div>
+</div>
+<!-- {% for yorum in mycomment  %}
         <h4>{{yorum.title}}</h4>
         <h6>{{yorum.content}}</h6>
-    {% endfor %}
+    {% endfor %} -->
 {% endblock content %}
-    
